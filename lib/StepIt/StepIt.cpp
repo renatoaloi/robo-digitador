@@ -7,6 +7,7 @@ AF_Stepper axis_y(200, 1);
 
 int pos;
 int posx, posy;
+int servo_limit = 110;
 
 char mapa_valores[5][3][3] = {
     {"F1", "F2", " <"},
@@ -120,13 +121,13 @@ bool step_to_it(const char *valor)
 void click_it()
 {
     myservo.write(1);
-    for (int i = 1; i <= 100; i += 1)
+    for (int i = 1; i <= servo_limit; i += 1)
     { 
         myservo.write(i); 
         delay(1);           
     }
 
-    for (int i = 100; i >= 0; i -= 1)
+    for (int i = servo_limit; i >= 0; i -= 1)
     { 
         myservo.write(i); 
         delay(1);           
